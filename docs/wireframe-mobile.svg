@@ -1,0 +1,28 @@
+<svg width="400" height="800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="white"/>
+  <rect x="0" y="0" width="400" height="60" fill="none" stroke="black" stroke-width="2"/>
+  <text x="20" y="35" font-family="Arial" font-size="20">PrintHub 3D</text>
+  <rect x="350" y="15" width="30" height="30" fill="none" stroke="black"/>
+  <rect x="20" y="80" width="360" height="100" fill="none" stroke="black" stroke-width="2"/>
+  <text x="40" y="110" font-family="Arial" font-size="18">Modelos Populares</text>
+  <text x="40" y="140" font-family="Arial" font-size="14">Galeria de impressão 3D</text>
+  <text x="20" y="200" font-family="Arial" font-size="16">Modelos Populares</text>
+  <rect x="20" y="220" width="360" height="120" fill="none" stroke="black"/>
+  <rect x="30" y="230" width="340" height="50" fill="none" stroke="gray"/>
+  <text x="30" y="300" font-family="Arial" font-size="14">Modelo 1 - PLA</text>
+  <rect x="20" y="350" width="360" height="120" fill="none" stroke="black"/>
+  <rect x="30" y="360" width="340" height="50" fill="none" stroke="gray"/>
+  <text x="30" y="430" font-family="Arial" font-size="14">Modelo 2 - PETG</text>
+  <rect x="20" y="480" width="360" height="120" fill="none" stroke="black"/>
+  <rect x="30" y="490" width="340" height="50" fill="none" stroke="gray"/>
+  <text x="30" y="560" font-family="Arial" font-size="14">Modelo 3 - ABS</text>
+  <text x="20" y="620" font-family="Arial" font-size="16">Tipos de Filamentos</text>
+  <rect x="20" y="640" width="360" height="30" fill="none" stroke="black"/>
+  <text x="30" y="660" font-family="Arial" font-size="14">PLA - Fácil de imprimir</text>
+  <rect x="20" y="680" width="360" height="30" fill="none" stroke="black"/>
+  <text x="30" y="700" font-family="Arial" font-size="14">ABS - Resistente</text>
+  <rect x="20" y="720" width="360" height="30" fill="none" stroke="black"/>
+  <text x="30" y="740" font-family="Arial" font-size="14">PETG - Versátil</text>
+  <rect x="0" y="760" width="400" height="40" fill="none" stroke="black"/>
+  <text x="20" y="785" font-family="Arial" font-size="12">© 2026 PrintHub 3D</text>
+</svg>
