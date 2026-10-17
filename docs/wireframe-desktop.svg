@@ -1,0 +1,30 @@
+<svg width="1200" height="700" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="white"/>
+  <rect x="0" y="0" width="1200" height="60" fill="none" stroke="black" stroke-width="2"/>
+  <text x="20" y="35" font-family="Arial" font-size="20">PrintHub 3D</text>
+  <text x="800" y="35" font-family="Arial" font-size="14">Início  Modelos  Filamentos  Sobre</text>
+  <rect x="20" y="80" width="1160" height="120" fill="none" stroke="black" stroke-width="2"/>
+  <text x="40" y="110" font-family="Arial" font-size="22">Galeria de Impressão 3D</text>
+  <text x="40" y="150" font-family="Arial" font-size="14">Modelos populares e tipos de filamentos</text>
+  <text x="20" y="220" font-family="Arial" font-size="16">Modelos Populares (3 colunas)</text>
+  <rect x="20" y="240" width="370" height="140" fill="none" stroke="black"/>
+  <rect x="30" y="250" width="350" height="60" fill="none" stroke="gray"/>
+  <text x="30" y="330" font-family="Arial" font-size="14">Modelo 1 - PLA - Fácil</text>
+  <rect x="410" y="240" width="370" height="140" fill="none" stroke="black"/>
+  <rect x="420" y="250" width="350" height="60" fill="none" stroke="gray"/>
+  <text x="420" y="330" font-family="Arial" font-size="14">Modelo 2 - PETG - Médio</text>
+  <rect x="800" y="240" width="370" height="140" fill="none" stroke="black"/>
+  <rect x="810" y="250" width="350" height="60" fill="none" stroke="gray"/>
+  <text x="810" y="330" font-family="Arial" font-size="14">Modelo 3 - ABS - Difícil</text>
+  <text x="20" y="400" font-family="Arial" font-size="16">Tipos de Filamentos</text>
+  <rect x="20" y="420" width="280" height="50" fill="none" stroke="black"/>
+  <text x="30" y="450" font-family="Arial" font-size="14">PLA - Iniciante</text>
+  <rect x="320" y="420" width="280" height="50" fill="none" stroke="black"/>
+  <text x="330" y="450" font-family="Arial" font-size="14">ABS - Resistente</text>
+  <rect x="620" y="420" width="280" height="50" fill="none" stroke="black"/>
+  <text x="630" y="450" font-family="Arial" font-size="14">PETG - Versátil</text>
+  <rect x="920" y="420" width="260" height="50" fill="none" stroke="black"/>
+  <text x="930" y="450" font-family="Arial" font-size="14">TPU - Flexível</text>
+  <rect x="0" y="660" width="1200" height="40" fill="none" stroke="black"/>
+  <text x="20" y="685" font-family="Arial" font-size="12">© 2026 PrintHub 3D</text>
+</svg>

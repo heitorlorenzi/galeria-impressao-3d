@@ -1,0 +1,25 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="white"/>
+  <rect x="0" y="0" width="800" height="60" fill="none" stroke="black" stroke-width="2"/>
+  <text x="20" y="35" font-family="Arial" font-size="20">PrintHub 3D</text>
+  <text x="500" y="35" font-family="Arial" font-size="14">Início  Modelos  Filamentos</text>
+  <rect x="20" y="80" width="760" height="100" fill="none" stroke="black" stroke-width="2"/>
+  <text x="40" y="110" font-family="Arial" font-size="18">Galeria de Impressão 3D</text>
+  <text x="40" y="140" font-family="Arial" font-size="14">Explore modelos e filamentos</text>
+  <text x="20" y="200" font-family="Arial" font-size="16">Modelos Populares (2 colunas)</text>
+  <rect x="20" y="220" width="370" height="120" fill="none" stroke="black"/>
+  <rect x="30" y="230" width="350" height="50" fill="none" stroke="gray"/>
+  <text x="30" y="300" font-family="Arial" font-size="14">Modelo 1 - PLA</text>
+  <rect x="410" y="220" width="370" height="120" fill="none" stroke="black"/>
+  <rect x="420" y="230" width="350" height="50" fill="none" stroke="gray"/>
+  <text x="420" y="300" font-family="Arial" font-size="14">Modelo 2 - PETG</text>
+  <text x="20" y="360" font-family="Arial" font-size="16">Tipos de Filamentos</text>
+  <rect x="20" y="380" width="240" height="40" fill="none" stroke="black"/>
+  <text x="30" y="405" font-family="Arial" font-size="14">PLA</text>
+  <rect x="280" y="380" width="240" height="40" fill="none" stroke="black"/>
+  <text x="290" y="405" font-family="Arial" font-size="14">ABS</text>
+  <rect x="540" y="380" width="240" height="40" fill="none" stroke="black"/>
+  <text x="550" y="405" font-family="Arial" font-size="14">PETG</text>
+  <rect x="0" y="560" width="800" height="40" fill="none" stroke="black"/>
+  <text x="20" y="585" font-family="Arial" font-size="12">© 2026 PrintHub 3D</text>
+</svg>
