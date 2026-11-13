@@ -90,6 +90,7 @@
 /* Sections */
 section {
   padding: var(--espacamento-grande) var(--espacamento);
+  scroll-margin-top: 72px; /* compensa o cabeçalho fixo ao clicar no menu */
 }
 
 section h2 {
@@ -269,7 +270,8 @@ section h2 {
 
 /* Card favoritado (estado favoritos) */
 .modelo-card.favorito {
-  border: 2px solid var(--cor-favorito);
+  border-color: var(--cor-favorito);
+  box-shadow: 0 0 0 1px var(--cor-favorito), var(--sombra);
 }
 
 /* Tablet */
