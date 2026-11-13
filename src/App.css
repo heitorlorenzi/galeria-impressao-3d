@@ -7,6 +7,7 @@
   --cor-card: #ffffff;
   --cor-header: #1a1a2e;
   --cor-borda: #dee2e6;
+  --cor-favorito: #e63946;
   --espacamento-pequeno: 0.5rem;
   --espacamento: 1rem;
   --espacamento-grande: 2rem;
@@ -197,6 +198,80 @@ section h2 {
   font-size: 0.85rem;
 }
 
+/* Menu aberto no celular (estado menuAberto) */
+.nav-aberta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacamento);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: var(--espacamento);
+  background-color: var(--cor-header);
+  border-top: 1px solid var(--cor-primaria);
+}
+
+/* Barra com filtro e contador de favoritos */
+.modelos-barra {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacamento);
+  margin-bottom: var(--espacamento-grande);
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacamento-pequeno);
+}
+
+.filtro-botao {
+  padding: var(--espacamento-pequeno) var(--espacamento);
+  border: 2px solid var(--cor-header);
+  border-radius: 999px;
+  background-color: var(--cor-card);
+  color: var(--cor-header);
+  font-family: var(--fonte-principal);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.filtro-botao.ativo {
+  background-color: var(--cor-header);
+  color: var(--cor-primaria);
+}
+
+.contador-favoritos {
+  font-weight: bold;
+  color: var(--cor-favorito);
+}
+
+/* Botão de favoritar sobre a imagem do card */
+.modelo-imagem {
+  position: relative;
+}
+
+.botao-favorito {
+  position: absolute;
+  top: var(--espacamento-pequeno);
+  right: var(--espacamento-pequeno);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--cor-favorito);
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+}
+
+/* Card favoritado (estado favoritos) */
+.modelo-card.favorito {
+  border: 2px solid var(--cor-favorito);
+}
+
 /* Tablet */
 @media (min-width: 768px) {
   .menu-toggle {
@@ -205,6 +280,19 @@ section h2 {
 
   .nav {
     display: flex;
+  }
+
+  .nav-aberta {
+    position: static;
+    flex-direction: row;
+    padding: 0;
+    border-top: none;
+  }
+
+  .modelos-barra {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .hero h1 {
