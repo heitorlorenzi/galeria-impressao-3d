@@ -26,36 +26,36 @@ function lerFavoritosSalvos(): number[] {
 }
 
 function App() {
-  // Estado 1: menu do celular aberto ou fechado
+  // ---------- Estados da interface ----------
+
+  // Menu do celular aberto ou fechado
   const [menuAberto, setMenuAberto] = useState(false)
 
-  // Estado 2: material escolhido no filtro da listagem principal
+  // Material escolhido no filtro da listagem principal
   const [filtroMaterial, setFiltroMaterial] = useState('Todos')
 
-  // Estado 3: ids dos modelos marcados como favoritos.
-  // O valor inicial vem do localStorage (a função roda só na primeira renderização)
-  const [favoritos, setFavoritos] = useState<number[]>(() => lerFavoritosSalvos())
-
-  // Sempre que os favoritos mudam, salva a lista no localStorage
-  useEffect(() => {
-    localStorage.setItem(CHAVE_FAVORITOS, JSON.stringify(favoritos))
-  }, [favoritos])
-
-  // Estado 8 (desafio Busca): texto digitado no campo de busca
+  // Texto digitado no campo de busca (desafio Busca)
   const [busca, setBusca] = useState('')
 
-  // Estado 4 (Fase 4): modelos que chegam do JSON externo.
-  // Começa como vetor vazio e é tipado como vetor de Modelo.
+  // Ids dos modelos favoritos. O valor inicial vem do localStorage
+  // (a função roda só na primeira renderização)
+  const [favoritos, setFavoritos] = useState<number[]>(() => lerFavoritosSalvos())
+
+  // ---------- Estados dos dados externos (Fase 4) ----------
+
+  // Modelos que chegam do JSON: começa vazio e é tipado como vetor de Modelo
   const [modelos, setModelos] = useState<Modelo[]>([])
 
-  // Estado 5 (Fase 4): true enquanto os dados ainda não chegaram
+  // true enquanto os dados ainda não chegaram
   const [carregando, setCarregando] = useState(true)
 
-  // Estado 6 (Fase 4): mensagem de erro para o usuário ('' quando não há erro)
+  // Mensagem de erro para o usuário ('' quando não há erro)
   const [erro, setErro] = useState('')
 
-  // Estado 7 (Fase 4): conta as tentativas; quando muda, o useEffect busca de novo
+  // Conta as tentativas; quando muda, o useEffect abaixo busca os dados de novo
   const [tentativa, setTentativa] = useState(0)
+
+  // ---------- Efeitos ----------
 
   // Busca os modelos quando a página aparece e de novo a cada "Tentar novamente"
   useEffect(() => {
@@ -82,6 +82,13 @@ function App() {
 
     buscarModelos()
   }, [tentativa])
+
+  // Sempre que os favoritos mudam, salva a lista no localStorage
+  useEffect(() => {
+    localStorage.setItem(CHAVE_FAVORITOS, JSON.stringify(favoritos))
+  }, [favoritos])
+
+  // ---------- Funções e valores calculados ----------
 
   function alternarFavorito(id: number) {
     if (favoritos.includes(id)) {
