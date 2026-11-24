@@ -1,11 +1,14 @@
 import type { Modelo } from '../data/modelos'
 import CarregandoModelos from './CarregandoModelos'
 import FiltroMaterial from './FiltroMaterial'
+import MensagemErro from './MensagemErro'
 import ModeloCard from './ModeloCard'
 
 type SecaoModelosProps = {
   modelos: Modelo[]
   carregando: boolean
+  erro: string
+  onTentarNovamente: () => void
   materiais: string[]
   filtroAtivo: string
   onFiltrar: (material: string) => void
@@ -16,6 +19,8 @@ type SecaoModelosProps = {
 function SecaoModelos({
   modelos,
   carregando,
+  erro,
+  onTentarNovamente,
   materiais,
   filtroAtivo,
   onFiltrar,
@@ -34,7 +39,11 @@ function SecaoModelos({
       {/* Enquanto os dados não chegam, mostra o carregando no lugar da grade */}
       {carregando && <CarregandoModelos />}
 
-      {!carregando && (
+      {/* Se o fetch falhou, mostra a mensagem de erro com o botão de tentar de novo */}
+      {!carregando && erro && <MensagemErro mensagem={erro} onTentarNovamente={onTentarNovamente} />}
+
+      {/* Dados carregados sem erro: mostra a grade de cards */}
+      {!carregando && !erro && (
         <div className="modelos-grid">
           {modelos.map((modelo) => (
             <ModeloCard

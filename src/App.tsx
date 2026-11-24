@@ -29,22 +29,37 @@ function App() {
   // Estado 5 (Fase 4): true enquanto os dados ainda não chegaram
   const [carregando, setCarregando] = useState(true)
 
-  // Busca os modelos uma única vez, quando a página aparece (dependências vazias: [])
+  // Estado 6 (Fase 4): mensagem de erro para o usuário ('' quando não há erro)
+  const [erro, setErro] = useState('')
+
+  // Estado 7 (Fase 4): conta as tentativas; quando muda, o useEffect busca de novo
+  const [tentativa, setTentativa] = useState(0)
+
+  // Busca os modelos quando a página aparece e de novo a cada "Tentar novamente"
   useEffect(() => {
     async function buscarModelos() {
       setCarregando(true)
+      setErro('')
       try {
         const resposta = await fetch(URL_MODELOS)
+
+        // O fetch só falha sozinho sem conexão; erro 404 ou 500 precisa ser checado aqui
+        if (!resposta.ok) {
+          throw new Error(`Erro HTTP ${resposta.status}`)
+        }
+
         const dados: Modelo[] = await resposta.json()
         setModelos(dados)
+      } catch {
+        setErro('Não foi possível carregar os modelos. Verifique sua conexão e tente novamente.')
       } finally {
-        // Terminou a requisição: esconde o "carregando"
+        // Deu certo ou deu erro: a requisição terminou, então esconde o "carregando"
         setCarregando(false)
       }
     }
 
     buscarModelos()
-  }, [])
+  }, [tentativa])
 
   function alternarFavorito(id: number) {
     if (favoritos.includes(id)) {
@@ -72,6 +87,8 @@ function App() {
         <SecaoModelos
           modelos={modelosFiltrados}
           carregando={carregando}
+          erro={erro}
+          onTentarNovamente={() => setTentativa(tentativa + 1)}
           materiais={materiais}
           filtroAtivo={filtroMaterial}
           onFiltrar={setFiltroMaterial}

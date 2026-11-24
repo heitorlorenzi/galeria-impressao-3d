@@ -8,6 +8,8 @@
   --cor-header: #1a1a2e;
   --cor-borda: #dee2e6;
   --cor-favorito: #e63946;
+  --cor-erro: #c1121f;
+  --cor-erro-fundo: #fff1f2;
   --espacamento-pequeno: 0.5rem;
   --espacamento: 1rem;
   --espacamento-grande: 2rem;
@@ -298,6 +300,48 @@ section h2 {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Estado de erro (Fase 4) */
+.estado-erro {
+  text-align: center;
+  padding: var(--espacamento-grande) var(--espacamento);
+  border: 2px dashed var(--cor-erro);
+  border-radius: var(--borda-raio);
+  background-color: var(--cor-erro-fundo);
+  color: var(--cor-texto);
+}
+
+.estado-erro-icone {
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--cor-erro);
+}
+
+.estado-erro h3 {
+  margin: var(--espacamento-pequeno) 0;
+  color: var(--cor-erro);
+}
+
+.estado-erro p {
+  margin-bottom: var(--espacamento);
+}
+
+.botao-tentar {
+  padding: var(--espacamento-pequeno) var(--espacamento-grande);
+  border: none;
+  border-radius: 999px;
+  background-color: var(--cor-header);
+  color: var(--cor-primaria);
+  font-family: var(--fonte-principal);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.botao-tentar:hover {
+  background-color: var(--cor-erro);
+  color: white;
 }
 
 /* Tablet */
