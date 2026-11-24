@@ -12,6 +12,19 @@ import { filamentos } from './data/filamentos'
 
 const materiais = ['Todos', 'PLA', 'PETG', 'ABS']
 
+// Desafio Persistência local: chave onde os favoritos ficam salvos no navegador
+const CHAVE_FAVORITOS = 'printhub-favoritos'
+
+// Lê os favoritos salvos no localStorage; se não houver nada (ou estiver inválido), começa vazio
+function lerFavoritosSalvos(): number[] {
+  try {
+    const salvos = localStorage.getItem(CHAVE_FAVORITOS)
+    return salvos ? JSON.parse(salvos) : []
+  } catch {
+    return []
+  }
+}
+
 function App() {
   // Estado 1: menu do celular aberto ou fechado
   const [menuAberto, setMenuAberto] = useState(false)
@@ -19,8 +32,14 @@ function App() {
   // Estado 2: material escolhido no filtro da listagem principal
   const [filtroMaterial, setFiltroMaterial] = useState('Todos')
 
-  // Estado 3: ids dos modelos marcados como favoritos
-  const [favoritos, setFavoritos] = useState<number[]>([])
+  // Estado 3: ids dos modelos marcados como favoritos.
+  // O valor inicial vem do localStorage (a função roda só na primeira renderização)
+  const [favoritos, setFavoritos] = useState<number[]>(() => lerFavoritosSalvos())
+
+  // Sempre que os favoritos mudam, salva a lista no localStorage
+  useEffect(() => {
+    localStorage.setItem(CHAVE_FAVORITOS, JSON.stringify(favoritos))
+  }, [favoritos])
 
   // Estado 8 (desafio Busca): texto digitado no campo de busca
   const [busca, setBusca] = useState('')
