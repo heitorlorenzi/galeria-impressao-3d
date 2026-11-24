@@ -1,21 +1,34 @@
 import type { Modelo } from '../data/modelos'
+import CampoBusca from './CampoBusca'
+import CarregandoModelos from './CarregandoModelos'
 import FiltroMaterial from './FiltroMaterial'
+import MensagemErro from './MensagemErro'
 import ModeloCard from './ModeloCard'
 
 type SecaoModelosProps = {
   modelos: Modelo[]
+  carregando: boolean
+  erro: string
+  onTentarNovamente: () => void
   materiais: string[]
   filtroAtivo: string
   onFiltrar: (material: string) => void
+  busca: string
+  onBuscar: (texto: string) => void
   favoritos: number[]
   onFavoritar: (id: number) => void
 }
 
 function SecaoModelos({
   modelos,
+  carregando,
+  erro,
+  onTentarNovamente,
   materiais,
   filtroAtivo,
   onFiltrar,
+  busca,
+  onBuscar,
   favoritos,
   onFavoritar,
 }: SecaoModelosProps) {
@@ -25,19 +38,34 @@ function SecaoModelos({
 
       <div className="modelos-barra">
         <FiltroMaterial materiais={materiais} filtroAtivo={filtroAtivo} onFiltrar={onFiltrar} />
+        <CampoBusca busca={busca} onBuscar={onBuscar} />
         <p className="contador-favoritos">♥ {favoritos.length} favorito(s)</p>
       </div>
 
-      <div className="modelos-grid">
-        {modelos.map((modelo) => (
-          <ModeloCard
-            key={modelo.id}
-            modelo={modelo}
-            favorito={favoritos.includes(modelo.id)}
-            onFavoritar={onFavoritar}
-          />
-        ))}
-      </div>
+      {/* Enquanto os dados não chegam, mostra o carregando no lugar da grade */}
+      {carregando && <CarregandoModelos />}
+
+      {/* Se o fetch falhou, mostra a mensagem de erro com o botão de tentar de novo */}
+      {!carregando && erro && <MensagemErro mensagem={erro} onTentarNovamente={onTentarNovamente} />}
+
+      {/* Nenhum modelo passou no filtro ou na busca */}
+      {!carregando && !erro && modelos.length === 0 && (
+        <p className="lista-vazia">Nenhum modelo encontrado. Tente outro nome ou material.</p>
+      )}
+
+      {/* Dados carregados sem erro: mostra a grade de cards */}
+      {!carregando && !erro && modelos.length > 0 && (
+        <div className="modelos-grid">
+          {modelos.map((modelo) => (
+            <ModeloCard
+              key={modelo.id}
+              modelo={modelo}
+              favorito={favoritos.includes(modelo.id)}
+              onFavoritar={onFavoritar}
+            />
+          ))}
+        </div>
+      )}
     </section>
   )
 }
