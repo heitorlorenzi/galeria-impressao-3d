@@ -1,9 +1,22 @@
-// Mostrado no lugar da grade enquanto o JSON dos modelos ainda não chegou
+// Desafio bonificado "Esqueleto de carregamento":
+// enquanto o JSON não chega, mostra cards "fantasma" animados no lugar da grade
+const cardsFantasma = [1, 2, 3, 4, 5, 6]
+
 function CarregandoModelos() {
   return (
     <div className="estado-carregando" role="status">
-      <span className="spinner" aria-hidden="true"></span>
-      <p>Carregando modelos...</p>
+      <p className="estado-carregando-texto">Carregando modelos...</p>
+
+      <div className="modelos-grid">
+        {cardsFantasma.map((numero) => (
+          <div key={numero} className="modelo-card esqueleto" aria-hidden="true">
+            <div className="esqueleto-imagem"></div>
+            <div className="esqueleto-linha titulo"></div>
+            <div className="esqueleto-linha"></div>
+            <div className="esqueleto-linha curta"></div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

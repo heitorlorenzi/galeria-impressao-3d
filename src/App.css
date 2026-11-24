@@ -10,6 +10,8 @@
   --cor-favorito: #e63946;
   --cor-erro: #c1121f;
   --cor-erro-fundo: #fff1f2;
+  --cor-esqueleto: #dde2e7;
+  --cor-esqueleto-brilho: #f8f9fa;
   --espacamento-pequeno: 0.5rem;
   --espacamento: 1rem;
   --espacamento-grande: 2rem;
@@ -277,28 +279,54 @@ section h2 {
 }
 
 /* Estado de carregando (Fase 4) */
-.estado-carregando {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--espacamento);
-  padding: var(--espacamento-grande);
+.estado-carregando-texto {
+  margin-bottom: var(--espacamento);
   color: var(--cor-header);
   font-weight: bold;
 }
 
-.spinner {
-  width: 28px;
-  height: 28px;
-  border: 4px solid var(--cor-borda);
-  border-top-color: var(--cor-primaria);
-  border-radius: 50%;
-  animation: girar 0.8s linear infinite;
+/* Desafio: esqueleto de carregamento (cards fantasma) */
+.esqueleto {
+  padding-bottom: var(--espacamento);
 }
 
-@keyframes girar {
+.esqueleto-imagem,
+.esqueleto-linha {
+  background: linear-gradient(
+    90deg,
+    var(--cor-esqueleto) 25%,
+    var(--cor-esqueleto-brilho) 50%,
+    var(--cor-esqueleto) 75%
+  );
+  background-size: 200% 100%;
+  animation: brilho 1.2s linear infinite;
+}
+
+.esqueleto-imagem {
+  height: 160px;
+}
+
+.esqueleto-linha {
+  height: 0.85rem;
+  margin: var(--espacamento) var(--espacamento) 0;
+  border-radius: 4px;
+}
+
+.esqueleto-linha.titulo {
+  width: 70%;
+  height: 1.15rem;
+}
+
+.esqueleto-linha.curta {
+  width: 45%;
+}
+
+@keyframes brilho {
+  from {
+    background-position: 100% 0;
+  }
   to {
-    transform: rotate(360deg);
+    background-position: -100% 0;
   }
 }
 
