@@ -1,4 +1,5 @@
 import type { Modelo } from '../data/modelos'
+import CampoBusca from './CampoBusca'
 import CarregandoModelos from './CarregandoModelos'
 import FiltroMaterial from './FiltroMaterial'
 import MensagemErro from './MensagemErro'
@@ -12,6 +13,8 @@ type SecaoModelosProps = {
   materiais: string[]
   filtroAtivo: string
   onFiltrar: (material: string) => void
+  busca: string
+  onBuscar: (texto: string) => void
   favoritos: number[]
   onFavoritar: (id: number) => void
 }
@@ -24,6 +27,8 @@ function SecaoModelos({
   materiais,
   filtroAtivo,
   onFiltrar,
+  busca,
+  onBuscar,
   favoritos,
   onFavoritar,
 }: SecaoModelosProps) {
@@ -33,6 +38,7 @@ function SecaoModelos({
 
       <div className="modelos-barra">
         <FiltroMaterial materiais={materiais} filtroAtivo={filtroAtivo} onFiltrar={onFiltrar} />
+        <CampoBusca busca={busca} onBuscar={onBuscar} />
         <p className="contador-favoritos">♥ {favoritos.length} favorito(s)</p>
       </div>
 
@@ -42,8 +48,13 @@ function SecaoModelos({
       {/* Se o fetch falhou, mostra a mensagem de erro com o botão de tentar de novo */}
       {!carregando && erro && <MensagemErro mensagem={erro} onTentarNovamente={onTentarNovamente} />}
 
+      {/* Nenhum modelo passou no filtro ou na busca */}
+      {!carregando && !erro && modelos.length === 0 && (
+        <p className="lista-vazia">Nenhum modelo encontrado. Tente outro nome ou material.</p>
+      )}
+
       {/* Dados carregados sem erro: mostra a grade de cards */}
-      {!carregando && !erro && (
+      {!carregando && !erro && modelos.length > 0 && (
         <div className="modelos-grid">
           {modelos.map((modelo) => (
             <ModeloCard

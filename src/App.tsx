@@ -22,6 +22,9 @@ function App() {
   // Estado 3: ids dos modelos marcados como favoritos
   const [favoritos, setFavoritos] = useState<number[]>([])
 
+  // Estado 8 (desafio Busca): texto digitado no campo de busca
+  const [busca, setBusca] = useState('')
+
   // Estado 4 (Fase 4): modelos que chegam do JSON externo.
   // Começa como vetor vazio e é tipado como vetor de Modelo.
   const [modelos, setModelos] = useState<Modelo[]>([])
@@ -69,10 +72,13 @@ function App() {
     }
   }
 
-  const modelosFiltrados =
-    filtroMaterial === 'Todos'
-      ? modelos
-      : modelos.filter((modelo) => modelo.material === filtroMaterial)
+  // Lista mostrada na tela: calculada a partir dos estados, sem guardar em outro estado.
+  // O modelo aparece se passar no filtro de material E na busca pelo nome.
+  const modelosFiltrados = modelos.filter((modelo) => {
+    const passaNoMaterial = filtroMaterial === 'Todos' || modelo.material === filtroMaterial
+    const passaNaBusca = modelo.nome.toLowerCase().includes(busca.trim().toLowerCase())
+    return passaNoMaterial && passaNaBusca
+  })
 
   return (
     <div className="app">
@@ -92,6 +98,8 @@ function App() {
           materiais={materiais}
           filtroAtivo={filtroMaterial}
           onFiltrar={setFiltroMaterial}
+          busca={busca}
+          onBuscar={setBusca}
           favoritos={favoritos}
           onFavoritar={alternarFavorito}
         />
