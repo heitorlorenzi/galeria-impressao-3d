@@ -26,12 +26,21 @@ function App() {
   // Começa como vetor vazio e é tipado como vetor de Modelo.
   const [modelos, setModelos] = useState<Modelo[]>([])
 
+  // Estado 5 (Fase 4): true enquanto os dados ainda não chegaram
+  const [carregando, setCarregando] = useState(true)
+
   // Busca os modelos uma única vez, quando a página aparece (dependências vazias: [])
   useEffect(() => {
     async function buscarModelos() {
-      const resposta = await fetch(URL_MODELOS)
-      const dados: Modelo[] = await resposta.json()
-      setModelos(dados)
+      setCarregando(true)
+      try {
+        const resposta = await fetch(URL_MODELOS)
+        const dados: Modelo[] = await resposta.json()
+        setModelos(dados)
+      } finally {
+        // Terminou a requisição: esconde o "carregando"
+        setCarregando(false)
+      }
     }
 
     buscarModelos()
@@ -62,6 +71,7 @@ function App() {
         <Hero />
         <SecaoModelos
           modelos={modelosFiltrados}
+          carregando={carregando}
           materiais={materiais}
           filtroAtivo={filtroMaterial}
           onFiltrar={setFiltroMaterial}

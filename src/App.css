@@ -274,6 +274,32 @@ section h2 {
   box-shadow: 0 0 0 1px var(--cor-favorito), var(--sombra);
 }
 
+/* Estado de carregando (Fase 4) */
+.estado-carregando {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacamento);
+  padding: var(--espacamento-grande);
+  color: var(--cor-header);
+  font-weight: bold;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 4px solid var(--cor-borda);
+  border-top-color: var(--cor-primaria);
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Tablet */
 @media (min-width: 768px) {
   .menu-toggle {

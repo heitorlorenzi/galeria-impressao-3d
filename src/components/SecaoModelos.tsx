@@ -1,9 +1,11 @@
 import type { Modelo } from '../data/modelos'
+import CarregandoModelos from './CarregandoModelos'
 import FiltroMaterial from './FiltroMaterial'
 import ModeloCard from './ModeloCard'
 
 type SecaoModelosProps = {
   modelos: Modelo[]
+  carregando: boolean
   materiais: string[]
   filtroAtivo: string
   onFiltrar: (material: string) => void
@@ -13,6 +15,7 @@ type SecaoModelosProps = {
 
 function SecaoModelos({
   modelos,
+  carregando,
   materiais,
   filtroAtivo,
   onFiltrar,
@@ -28,16 +31,21 @@ function SecaoModelos({
         <p className="contador-favoritos">♥ {favoritos.length} favorito(s)</p>
       </div>
 
-      <div className="modelos-grid">
-        {modelos.map((modelo) => (
-          <ModeloCard
-            key={modelo.id}
-            modelo={modelo}
-            favorito={favoritos.includes(modelo.id)}
-            onFavoritar={onFavoritar}
-          />
-        ))}
-      </div>
+      {/* Enquanto os dados não chegam, mostra o carregando no lugar da grade */}
+      {carregando && <CarregandoModelos />}
+
+      {!carregando && (
+        <div className="modelos-grid">
+          {modelos.map((modelo) => (
+            <ModeloCard
+              key={modelo.id}
+              modelo={modelo}
+              favorito={favoritos.includes(modelo.id)}
+              onFavoritar={onFavoritar}
+            />
+          ))}
+        </div>
+      )}
     </section>
   )
 }
